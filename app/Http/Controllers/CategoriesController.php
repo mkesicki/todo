@@ -18,16 +18,6 @@
         }
         
         /**
-         * Display a listing of the resource.
-         *
-         * @return \Illuminate\Http\Response
-         */
-        public function index(Request $request)
-        {
-            $category = Categories::get();
-            return response()->json(['status' => 'success','result' => $category]);
-        }
-        /**
          * Store a newly created resource in storage.
          *
          * @param  \Illuminate\Http\Request  $request
@@ -59,7 +49,11 @@
         {
             //we can add information about category and user in response
             $category = Categories::where('id', $id)->get();
-            return response()->json($category);
+            if(count($category)) {
+                return response()->json($category);
+            }
+
+            return response()->json([], Response::STATUS_NOT_FOUND);
         }
 
          /**

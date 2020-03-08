@@ -17,9 +17,9 @@ class CreateTableTasks extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');;
             $table->unsignedBigInteger('list_id');
-            $table->foreign('list_id')->references('id')->on('lists');
+            $table->foreign('list_id')->references('id')->on('lists')->onDelete('cascade');;
             $table->dateTime("date");
             $table->enum('status', ["Completed", "Snoozed", "Overdue"]);
             $table->string("name");
