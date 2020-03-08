@@ -18,9 +18,12 @@ class CreateTableUsers extends Migration
             $table->timestamps();
             $table->string("firstname");
             $table->string("lastname");
-            $table->string("email");
+            $table->string("email")->unique();
             $table->date("birthdate");
             $table->string("phone");
+            $table->string("password");
+            $table->enum('gender', ["male", "female"]); //should we be more fancy here :)
+            $table->string('api_key')->nullable();
         });
     }
 
