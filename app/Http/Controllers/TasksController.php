@@ -19,16 +19,6 @@
         }
         
         /**
-         * Display a listing of the resource.
-         *
-         * @return \Illuminate\Http\Response
-         */
-        public function index(Request $request)
-        {
-            $task = Auth::user()->tasks()->get();
-            return response()->json(['status' => 'success','result' => $task]);
-        }
-        /**
          * Store a newly created resource in storage.
          *
          * @param  \Illuminate\Http\Request  $request
